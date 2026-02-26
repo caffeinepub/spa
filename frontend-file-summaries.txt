@@ -1,0 +1,20 @@
+{
+  "frontend/src/index.css": "Global stylesheet with OKLCH earthy-green agricultural color tokens for light and dark modes, mobile safe-area-inset padding, 44px minimum touch targets, and Tailwind directives.",
+  "frontend/tailwind.config.js": "Tailwind config extending theme with HSL/OKLCH color tokens, Inter/Playfair Display/JetBrains Mono fonts, custom border radii, card box shadows, and fade-in animation; includes animate, typography, and container-queries plugins.",
+  "frontend/src/hooks/useQueries.ts": "React Query mutation hooks for all five backend calculation methods; useCalculateAreaFromRotations correctly maps shape to the Shape variant type from backend.d.ts.",
+  "frontend/src/components/ShapeSelector.tsx": "2×2 grid shape selector with four options (rectangle, square, irregular, rotation count), each showing an icon, label, and description, with active state highlighting.",
+  "frontend/src/components/PerimeterInputs.tsx": "Perimeter measurement input form with wheel circumference and rotation count fields (h-12, inputMode decimal) and inline validation error display.",
+  "frontend/src/components/RectangleInputs.tsx": "Rectangle area input form with labeled length and width number fields (h-12, inputMode decimal), validation error display, and full-width mobile layout.",
+  "frontend/src/components/SquareInputs.tsx": "Square area input form with a single labeled side-length number field (h-12, inputMode decimal) and inline validation error display.",
+  "frontend/src/components/IrregularInputs.tsx": "Dynamic irregular field input with card-per-triangle layout, vertically stacked base/height fields, add/remove triangle controls, and per-field validation errors.",
+  "frontend/src/components/ResultsDisplay.tsx": "Results panel showing area in acres (highlighted primary card), m², and hectares, plus perimeter in meters and kilometers, with formatted numbers and a CheckCircle2 header icon.",
+  "frontend/src/components/ConsiderationsPanel.tsx": "Amber-tinted tips panel with three measurement considerations (wheel slip, path accuracy, irregular fields) rendered as icon+text rows in a card layout.",
+  "frontend/src/components/FieldCalculator.tsx": "Main calculator component managing shape selection state, form state for all four shape types (rectangle, square, irregular, rotation), input validation, backend mutation calls, and rendering the appropriate input form and ResultsDisplay.",
+  "frontend/src/App.tsx": "Root app component with QueryClientProvider, sticky earthy-green header with app logo, single-column mobile-first layout containing FieldCalculator, ConsiderationsPanel, FormulaReference, UnitConversions sections, and a footer with caffeine.ai attribution.",
+  "frontend/index.html": "HTML entry point with PWA meta tags (theme-color, apple-mobile-web-app-capable, viewport-fit=cover), manifest link, apple-touch-icon, and service worker registration script.",
+  "frontend/src/components/RotationInputs.tsx": "Rotation-count area input form with wheel circumference, rotation count, shape type toggle (square/rectangle), and a conditionally rendered width field for rectangle mode with inline validation.",
+  "frontend/public/manifest.json": "PWA web app manifest with name \"SPA Field Measure\", standalone display mode, earthy green theme color, start_url /, and 192×192 and 512×512 icon references.",
+  "frontend/public/sw.js": "Service worker caching app shell on install, cleaning old caches on activate, and using cache-first for static assets with network-first for ICP canister API calls.",
+  "frontend/src/components/FormulaReference.tsx": "Formula reference section displaying calculation formulas for all five shape types (perimeter, rectangle, square, irregular, rotation-based square and rectangle) in earthy-green themed monospace cards.",
+  "frontend/src/components/UnitConversions.tsx": "Unit conversion reference panel listing six conversion factors (hectares, acres, km, miles) in a styled list with from/to/note columns."
+}

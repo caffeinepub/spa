@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Earthy green agricultural palette - light mode */
+    --background: oklch(0.98 0.008 120);
+    --foreground: oklch(0.18 0.04 130);
+
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.18 0.04 130);
+
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.18 0.04 130);
+
+    --primary: oklch(0.42 0.12 145);
+    --primary-foreground: oklch(0.98 0.008 120);
+
+    --secondary: oklch(0.88 0.04 130);
+    --secondary-foreground: oklch(0.25 0.06 140);
+
+    --muted: oklch(0.94 0.015 120);
+    --muted-foreground: oklch(0.52 0.04 130);
+
+    --accent: oklch(0.72 0.14 85);
+    --accent-foreground: oklch(0.18 0.04 130);
+
+    --destructive: oklch(0.55 0.22 25);
+    --destructive-foreground: oklch(0.98 0.008 120);
+
+    --border: oklch(0.88 0.025 130);
+    --input: oklch(0.88 0.025 130);
+    --ring: oklch(0.42 0.12 145);
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    /* Earthy green agricultural palette - dark mode */
+    --background: oklch(0.14 0.025 140);
+    --foreground: oklch(0.92 0.02 120);
+
+    --card: oklch(0.18 0.03 140);
+    --card-foreground: oklch(0.92 0.02 120);
+
+    --popover: oklch(0.18 0.03 140);
+    --popover-foreground: oklch(0.92 0.02 120);
+
+    --primary: oklch(0.62 0.14 145);
+    --primary-foreground: oklch(0.12 0.025 140);
+
+    --secondary: oklch(0.25 0.05 140);
+    --secondary-foreground: oklch(0.88 0.02 120);
+
+    --muted: oklch(0.22 0.03 140);
+    --muted-foreground: oklch(0.62 0.04 130);
+
+    --accent: oklch(0.72 0.14 85);
+    --accent-foreground: oklch(0.12 0.025 140);
+
+    --destructive: oklch(0.55 0.22 25);
+    --destructive-foreground: oklch(0.98 0.008 120);
+
+    --border: oklch(0.28 0.04 140);
+    --input: oklch(0.28 0.04 140);
+    --ring: oklch(0.62 0.14 145);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+    /* Safe area insets for mobile notch/home bar */
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
+    overflow-x: hidden;
+  }
+
+  /* Minimum touch target size for mobile */
+  button, a, input, select, textarea {
+    min-height: 44px;
+  }
+
+  input[type="number"] {
+    min-height: 44px;
+  }
+}
+
+@layer utilities {
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}

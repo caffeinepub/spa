@@ -1,0 +1,101 @@
+{
+  "kind": "build_request",
+  "title": "Build Land Area Calculator App",
+  "projectName": "SPA Field Measure",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Implement a backend Motoko actor exposing calculation methods: perimeter from wheel rotations, rectangle area, square area, irregular area from triangles, and area from rotations given a shape (square or rectangle).",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "rotation-based area calculation with results in m², acres, and hectares, plus perimeter measurement"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend exposes a method to calculate perimeter from wheel circumference and rotation count",
+        "Backend exposes methods for rectangle area (length × width), square area (side²), and irregular area from triangle base+height pairs",
+        "Backend exposes a method to calculate field area from rotation count given a shape type (square or rectangle) and optional width",
+        "All area results are returned as floating-point values in square meters"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Build a full-featured field calculator UI with shape selection (rectangle, square, irregular, rotation-based), appropriate input forms per shape, and results displayed in m², acres, and hectares plus perimeter in meters/km.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ],
+        "quotes": [
+          "rotation-based area calculation with results in m², acres, and hectares, plus perimeter measurement"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Shape selector shows four options: rectangle, square, irregular, and rotation-based",
+        "Selecting each shape renders the correct input form",
+        "Rotation-based inputs include wheel circumference, rotation count, field shape, and optional width",
+        "Results panel displays area in m², acres, and hectares, and perimeter in meters and km",
+        "Input validation shows error messages for missing or invalid values"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Configure the app as a Progressive Web App (PWA) with a web manifest, service worker for offline caching, and mobile home screen installation support (apple-touch-icon, standalone display mode).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-install",
+          "msg-download"
+        ],
+        "quotes": [
+          "I want an experience of download",
+          "How to install this app"
+        ]
+      },
+      "acceptanceCriteria": [
+        "manifest.json is present in public/ with name, icons (192×192 and 512×512), theme color, and standalone display mode",
+        "A service worker is registered that caches the app shell on install",
+        "index.html includes PWA meta tags and apple-touch-icon link",
+        "The app can be added to home screen on iOS Safari and Android Chrome and opens in full-screen standalone mode"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Apply an agricultural earthy-green visual theme using OKLCH color tokens for both light and dark modes, with mobile-first single-column layout, sticky header with app logo, and sections for calculator, measurement tips, formula reference, unit conversions, and footer.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-last"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Color palette uses earthy greens defined as OKLCH CSS custom properties for light and dark themes",
+        "Layout is single-column and mobile-first",
+        "Header is sticky and displays the app logo/name",
+        "Page includes tips panel, formula reference section, unit conversion reference, and footer below the calculator"
+      ]
+    }
+  ],
+  "constraints": [
+    "All Motoko logic must remain in the single backend/main.mo actor file",
+    "Do not modify files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or frontend/src/components/ui"
+  ],
+  "nonGoals": [
+    "User authentication or login (Internet Identity not required for this app)",
+    "Saving or persisting calculation history",
+    "GPS or map-based field measurement",
+    "Multi-language support"
+  ],
+  "imageRequirements": {
+    "required": [
+      "Flat icon of a green measuring wheel on a transparent background, suitable for PWA app icon (app-icon.dim_512x512.png)",
+      "Flat icon of a green measuring wheel on a transparent background, smaller size for PWA manifest (app-icon-192.dim_192x192.png)"
+    ],
+    "edits": []
+  }
+}

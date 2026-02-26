@@ -1,0 +1,41 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-26T09:47:12.710Z",
+  "summary": "The diff implements all four requirements substantially. REQ-1 backend is fully implemented with all five calculation methods. REQ-2 frontend calculator UI is complete with all four shapes, validation, and results display. REQ-3 PWA configuration is present with manifest, service worker, and index.html meta tags. REQ-4 earthy-green OKLCH theme, sticky header, mobile-first layout, tips, formula reference, unit conversions, and footer are all implemented. One minor discrepancy: the manifest.json references icon filenames differing from the requested image filenames, but this is an asset naming issue rather than a missing feature. The tailwind.config.js uses hsl() wrappers for several color tokens instead of oklch(), partially contradicting REQ-4, but the CSS custom properties themselves are defined in OKLCH.",
+  "missing_requirements": [],
+  "hallucinated_features": [
+    {
+      "description": "Perimeter-only calculation mode as a separate UI flow with its own PerimeterInputs component",
+      "reason": "The build request specifies a backend method for perimeter calculation but the frontend requirement only describes four shape options in the calculator UI (rectangle, square, irregular, rotation-based). The diff adds a dedicated PerimeterInputs component used in FieldCalculator as an additional calculation mode beyond the four requested shapes.",
+      "evidence": [
+        "frontend/src/components/PerimeterInputs.tsx",
+        "frontend/src/components/FieldCalculator.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.82,
+  "changed_files": [
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.html",
+    "frontend/public/manifest.json",
+    "frontend/public/sw.js",
+    "frontend/src/App.tsx",
+    "frontend/src/components/ConsiderationsPanel.tsx",
+    "frontend/src/components/FieldCalculator.tsx",
+    "frontend/src/components/FormulaReference.tsx",
+    "frontend/src/components/IrregularInputs.tsx",
+    "frontend/src/components/PerimeterInputs.tsx",
+    "frontend/src/components/RectangleInputs.tsx",
+    "frontend/src/components/ResultsDisplay.tsx",
+    "frontend/src/components/RotationInputs.tsx",
+    "frontend/src/components/ShapeSelector.tsx",
+    "frontend/src/components/SquareInputs.tsx",
+    "frontend/src/components/UnitConversions.tsx",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/index.css",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}

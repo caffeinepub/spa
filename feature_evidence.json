@@ -1,0 +1,74 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-build-a-full-featured-field-calculator-ui-with-shape-selection-rectangle-square-irregular-rotation-based-appropriate-input-forms-per-shape-and-results-displayed-in-m-acres-and-hectares-plus-perimeter-in-meters-km",
+      "featureTitle": "Build a full-featured field calculator UI with shape selection (rectangle, square, irregular, rotation-based), appropriate input forms per shape, and results displayed in m², acres, and hectares plus perimeter in meters/km.",
+      "files": [
+        "frontend/src/components/FieldCalculator.tsx",
+        "frontend/src/components/IrregularInputs.tsx",
+        "frontend/src/components/PerimeterInputs.tsx",
+        "frontend/src/components/RectangleInputs.tsx",
+        "frontend/src/components/ResultsDisplay.tsx",
+        "frontend/src/components/RotationInputs.tsx",
+        "frontend/src/components/ShapeSelector.tsx",
+        "frontend/src/components/SquareInputs.tsx",
+        "frontend/src/hooks/useQueries.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-configure-the-app-as-a-progressive-web-app-pwa-with-a-web-manifest-service-worker-for-offline-caching-and-mobile-home-screen-installation-support-apple-touch-icon-standalone-display-mode",
+      "featureTitle": "Configure the app as a Progressive Web App (PWA) with a web manifest, service worker for offline caching, and mobile home screen installation support (apple-touch-icon, standalone display mode).",
+      "files": [
+        "frontend/index.html",
+        "frontend/public/manifest.json",
+        "frontend/public/sw.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-apply-an-agricultural-earthy-green-visual-theme-using-oklch-color-tokens-for-both-light-and-dark-modes-with-mobile-first-single-column-layout-sticky-header-with-app-logo-and-sections-for-calculator-measurement-tips-formula-reference-unit-conversions-and-footer",
+      "featureTitle": "Apply an agricultural earthy-green visual theme using OKLCH color tokens for both light and dark modes, with mobile-first single-column layout, sticky header with app logo, and sections for calculator, measurement tips, formula reference, unit conversions, and footer.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/ConsiderationsPanel.tsx",
+        "frontend/src/components/FormulaReference.tsx",
+        "frontend/src/components/UnitConversions.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    }
+  ]
+}
