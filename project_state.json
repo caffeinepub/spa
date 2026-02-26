@@ -1,31 +1,42 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "Land area calculator app with rotation-based area calculation, results in m², acres, and hectares, plus perimeter measurement.",
-  "architectural_notes": [],
+  "summary": "Land area calculator app ('SPA For Accurate Measure') with PWA support, installable as a native app. Uses a barn logo as the app icon with white theme color.",
+  "architectural_notes": [
+    "PWA: App name 'SPA For Accurate Measure', short name 'SPA Measure', theme color white",
+    "Land area calculator supports rotation-based area calculation with results in m², acres, and hectares"
+  ],
   "known_issues": [],
   "isFixRequest": false,
-  "imageRequirements": "## Required Images\n- Flat icon of a green measuring wheel on a transparent background, suitable for PWA app icon (app-icon.dim_512x512.png)\n- Flat icon of a green measuring wheel on a transparent background, smaller size for PWA manifest (app-icon-192.dim_192x192.png)",
+  "imageRequirements": "## Required Images\n- Barn logo illustration with arched uppercase text 'SPA FOR ACCURATE MEASURE' above a hand-drawn barn, 'BARN' label below barn, and cursive tagline 'For accurate measure' beneath, dark gray on white background, square format (icon-192x192.dim_192x192.png)\n- Barn logo illustration with arched uppercase text 'SPA FOR ACCURATE MEASURE' above a hand-drawn barn, 'BARN' label below barn, and cursive tagline 'For accurate measure' beneath, dark gray on white background, square format (icon-512x512.dim_512x512.png)\n- Barn logo illustration with arched uppercase text 'SPA FOR ACCURATE MEASURE' above a hand-drawn barn, 'BARN' label below barn, and cursive tagline 'For accurate measure' beneath, dark gray on white background, square format (apple-touch-icon-180x180.dim_180x180.png)",
   "existing_features": [
     {
-      "id": "feature-build-a-full-featured-field-calculator-ui-with-shape-selection-rectangle-square-irregular-rotation-based-appropriate-input-forms-per-shape-and-results-displayed-in-m-acres-and-hectares-plus-perimeter-in-meters-km",
-      "title": "Build a full-featured field calculator UI with shape selection (rectangle, square, irregular, rotation-based), appropriate input forms per shape, and results displayed in m², acres, and hectares plus perimeter in meters/km.",
+      "id": "feature-generate-the-spa-for-accurate-measure-barn-logo-image-white-background-dark-gray-barn-illustration-with-arched-text-and-for-accurate-measure-tagline-in-all-required-pwa-icon-sizes-192-192-512-512-and-180-180-apple-touch-icon-save-them-as-static-assets-in-frontend-public-assets-generated",
+      "title": "Generate the 'SPA FOR ACCURATE MEASURE' barn logo image (white background, dark gray barn illustration with arched text and 'For accurate measure' tagline) in all required PWA icon sizes: 192×192, 512×512, and 180×180 (Apple Touch Icon). Save them as static assets in frontend/public/assets/generated/.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-public-manifest-json-to-use-the-generated-barn-logo-icons-set-the-192-192-and-512-512-icons-to-point-to-the-generated-asset-paths-set-app-name-to-spa-for-accurate-measure-short-name-to-spa-measure-background-color-to-ffffff-theme-color-to-ffffff-display-to-standalone-and-start-url-to",
+      "title": "Update frontend/public/manifest.json to use the generated barn logo icons: set the 192×192 and 512×512 icons to point to the generated asset paths, set app name to 'SPA For Accurate Measure', short_name to 'SPA Measure', background_color to '#ffffff', theme_color to '#ffffff', display to 'standalone', and start_url to '/'.",
       "reqIds": [
         "REQ-2"
       ],
       "version": 1
     },
     {
-      "id": "feature-configure-the-app-as-a-progressive-web-app-pwa-with-a-web-manifest-service-worker-for-offline-caching-and-mobile-home-screen-installation-support-apple-touch-icon-standalone-display-mode",
-      "title": "Configure the app as a Progressive Web App (PWA) with a web manifest, service worker for offline caching, and mobile home screen installation support (apple-touch-icon, standalone display mode).",
+      "id": "feature-update-frontend-index-html-to-reference-the-generated-apple-touch-icon-180-180-in-the-link-rel-apple-touch-icon-tag-and-ensure-the-link-rel-manifest-points-to-manifest-json-verify-theme-color-meta-tag-is-set-to-ffffff",
+      "title": "Update frontend/index.html to reference the generated apple-touch-icon (180×180) in the <link rel='apple-touch-icon'> tag and ensure the <link rel='manifest'> points to /manifest.json. Verify theme-color meta tag is set to '#ffffff'.",
       "reqIds": [
         "REQ-3"
       ],
       "version": 1
     },
     {
-      "id": "feature-apply-an-agricultural-earthy-green-visual-theme-using-oklch-color-tokens-for-both-light-and-dark-modes-with-mobile-first-single-column-layout-sticky-header-with-app-logo-and-sections-for-calculator-measurement-tips-formula-reference-unit-conversions-and-footer",
-      "title": "Apply an agricultural earthy-green visual theme using OKLCH color tokens for both light and dark modes, with mobile-first single-column layout, sticky header with app logo, and sections for calculator, measurement tips, formula reference, unit conversions, and footer.",
+      "id": "feature-ensure-frontend-public-sw-js-service-worker-is-correctly-registered-and-caches-the-app-shell-so-the-app-works-offline-and-qualifies-for-the-browser-s-add-to-home-screen-install-prompt-on-both-ios-and-android",
+      "title": "Ensure frontend/public/sw.js (service worker) is correctly registered and caches the app shell so the app works offline and qualifies for the browser's 'Add to Home Screen' / install prompt on both iOS and Android.",
       "reqIds": [
         "REQ-4"
       ],
@@ -35,33 +46,19 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Rotation-based area calculation",
+      "summary": "Add PWA support (web manifest + service worker) so the app is installable as a native app on iOS & Android",
       "reqIds": [],
       "status": "pending"
     },
     {
       "id": "AR-2",
-      "summary": "Results displayed in m², acres, and hectares",
+      "summary": "Use 'SPA FOR ACCURATE MEASURE' barn logo as the app icon with all required PWA icon sizes",
       "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-3",
-      "summary": "Perimeter measurement",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-4",
-      "summary": "Implement a backend Motoko actor exposing calculation methods: perimeter from wheel rotations, rectangle area, square area, irregular area from triangles, and area from rotations given a shape (square or rectangle).",
-      "reqIds": [
-        "REQ-1"
-      ],
       "status": "pending"
     }
   ],
   "gameProjectType": "none",
-  "projectName": "Land Area Calculator",
+  "projectName": "SPA For Accurate Measure",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

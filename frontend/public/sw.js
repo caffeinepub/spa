@@ -1,11 +1,11 @@
-const CACHE_NAME = 'spa-field-measure-v1';
+const CACHE_NAME = 'spa-accurate-measure-v2';
 const APP_SHELL = [
   '/',
   '/index.html',
   '/manifest.json',
-  '/assets/generated/pwa-icon-192.dim_192x192.png',
-  '/assets/generated/pwa-icon-512.dim_512x512.png',
-  '/assets/generated/app-logo.dim_256x256.png',
+  '/assets/generated/icon-192x192.dim_192x192.png',
+  '/assets/generated/icon-512x512.dim_512x512.png',
+  '/assets/generated/apple-touch-icon-180x180.dim_180x180.png',
 ];
 
 // Install: cache app shell

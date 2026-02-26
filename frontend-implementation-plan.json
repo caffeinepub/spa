@@ -1,137 +1,83 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Frontend Implementation Plan for Land Area Calculator App",
+  "title": "Set barn logo as PWA app icon and enable installable PWA support",
   "requirements": [
     {
-      "id": "REQ-2",
-      "summary": "Build a full-featured field calculator UI with shape selection (rectangle, square, irregular, rotation-based), appropriate input forms per shape, and results displayed in m², acres, and hectares plus perimeter in meters/km.",
+      "id": "REQ-1",
+      "summary": "Generate the 'SPA FOR ACCURATE MEASURE' barn logo image in all required PWA icon sizes (192×192, 512×512, and 180×180) and save them as static assets in frontend/public/assets/generated/",
       "acceptanceCriteria": [
-        "Shape selector shows four options: rectangle, square, irregular, and rotation-based",
-        "Selecting each shape renders the correct input form",
-        "Rotation-based inputs include wheel circumference, rotation count, field shape, and optional width",
-        "Results panel displays area in m², acres, and hectares, and perimeter in meters and km",
-        "Input validation shows error messages for missing or invalid values"
+        "icon-192x192.png exists in frontend/public/assets/generated/",
+        "icon-512x512.png exists in frontend/public/assets/generated/",
+        "apple-touch-icon-180x180.png exists in frontend/public/assets/generated/",
+        "All icons visually match the uploaded barn logo with white background"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/FieldCalculator.tsx",
-          "operation": "modify",
-          "description": "Review and ensure the calculator component manages shape selection state, form state for all four shape types, input validation logic, and dispatches mutations to backend calculation methods. Verify that rotation-based area calculation calls areaFromRotations with the correct Shape variant (square or rectangle with width). Ensure validation errors are displayed per input field and that the ResultsDisplay component receives both perimeter and area results."
+          "path": "frontend/public/assets/generated/icon-192x192.dim_192x192.png",
+          "operation": "create",
+          "description": "Generate 192×192px PWA icon of the barn logo illustration with arched uppercase text 'SPA FOR ACCURATE MEASURE' above a hand-drawn barn, 'BARN' label below barn, and cursive tagline 'For accurate measure' beneath, dark gray on white background, square format. This will be referenced in manifest.json."
         },
         {
-          "path": "frontend/src/components/ShapeSelector.tsx",
-          "operation": "modify",
-          "description": "Review and verify the shape selector renders four buttons in a 2×2 grid: rectangle, square, irregular, and rotation. Each button should be visually distinct when selected and call the parent handler to update the active shape state."
+          "path": "frontend/public/assets/generated/icon-512x512.dim_512x512.png",
+          "operation": "create",
+          "description": "Generate 512×512px PWA icon of the barn logo illustration with arched uppercase text 'SPA FOR ACCURATE MEASURE' above a hand-drawn barn, 'BARN' label below barn, and cursive tagline 'For accurate measure' beneath, dark gray on white background, square format. This will be referenced in manifest.json."
         },
         {
-          "path": "frontend/src/components/RectangleInputs.tsx",
-          "operation": "modify",
-          "description": "Review the rectangle input component to ensure it renders labeled number inputs for length and width with meter units and displays validation error messages below each field."
-        },
+          "path": "frontend/public/assets/generated/apple-touch-icon-180x180.dim_180x180.png",
+          "operation": "create",
+          "description": "Generate 180×180px Apple Touch Icon of the barn logo illustration with arched uppercase text 'SPA FOR ACCURATE MEASURE' above a hand-drawn barn, 'BARN' label below barn, and cursive tagline 'For accurate measure' beneath, dark gray on white background, square format. This will be referenced in index.html."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Update frontend/public/manifest.json to use the generated barn logo icons with correct app name, theme colors, and standalone display mode",
+      "acceptanceCriteria": [
+        "manifest.json name is 'SPA For Accurate Measure'",
+        "manifest.json short_name is 'SPA Measure'",
+        "manifest.json background_color and theme_color are '#ffffff'",
+        "manifest.json icons array references the generated 192×192 and 512×512 PNG files",
+        "display is set to 'standalone'"
+      ],
+      "file_operations": [
         {
-          "path": "frontend/src/components/SquareInputs.tsx",
+          "path": "frontend/public/manifest.json",
           "operation": "modify",
-          "description": "Review the square input component to ensure it renders a single labeled number input for side length with meter unit and displays validation errors."
-        },
-        {
-          "path": "frontend/src/components/IrregularInputs.tsx",
-          "operation": "modify",
-          "description": "Review the irregular input component to ensure it renders a dynamic list of triangle rows, each with base and height number inputs. Verify add/remove controls are present and validation errors are shown per field."
-        },
-        {
-          "path": "frontend/src/components/RotationInputs.tsx",
-          "operation": "modify",
-          "description": "Review the rotation input component to ensure it renders inputs for wheel circumference, rotation count, field shape selector (square or rectangle), and conditional width input (visible only for rectangle). Verify validation errors are displayed for each required field."
-        },
-        {
-          "path": "frontend/src/components/PerimeterInputs.tsx",
-          "operation": "modify",
-          "description": "Review the perimeter input component to ensure it renders labeled number inputs for wheel circumference and rotation count with appropriate units and validation error display."
-        },
-        {
-          "path": "frontend/src/components/ResultsDisplay.tsx",
-          "operation": "modify",
-          "description": "Review the results display component to ensure it conditionally shows perimeter results (in meters and kilometers) and area results (in m², acres, and hectares) with formatted numbers. Verify the component handles empty/null states gracefully."
-        },
-        {
-          "path": "frontend/src/hooks/useQueries.ts",
-          "operation": "modify",
-          "description": "Review and verify mutation hooks for all five backend calculation methods: calculatePerimeter, calculateRectangleArea, calculateSquareArea, calculateIrregularArea, and areaFromRotations. Ensure each hook correctly calls the corresponding backend method via the actor and handles success/error states. Verify areaFromRotations passes the Shape variant correctly (square or rectangle with RectangleDimensions)."
+          "description": "Update manifest to use the barn logo icons at frontend/public/assets/generated/icon-192x192.dim_192x192.png and frontend/public/assets/generated/icon-512x512.dim_512x512.png. Set name to 'SPA For Accurate Measure', short_name to 'SPA Measure', background_color to '#ffffff', theme_color to '#ffffff', display to 'standalone', and start_url to '/'."
         }
       ]
     },
     {
       "id": "REQ-3",
-      "summary": "Configure the app as a Progressive Web App (PWA) with a web manifest, service worker for offline caching, and mobile home screen installation support (apple-touch-icon, standalone display mode).",
+      "summary": "Update frontend/index.html to reference the generated apple-touch-icon and verify PWA meta tags",
       "acceptanceCriteria": [
-        "manifest.json is present in public/ with name, icons (192×192 and 512×512), theme color, and standalone display mode",
-        "A service worker is registered that caches the app shell on install",
-        "index.html includes PWA meta tags and apple-touch-icon link",
-        "The app can be added to home screen on iOS Safari and Android Chrome and opens in full-screen standalone mode"
+        "<link rel='apple-touch-icon' href='/assets/generated/apple-touch-icon-180x180.png'> is present in index.html",
+        "<meta name='theme-color' content='#ffffff'> is present",
+        "<link rel='manifest' href='/manifest.json'> is present"
       ],
       "file_operations": [
         {
           "path": "frontend/index.html",
           "operation": "modify",
-          "description": "Review and verify the HTML entry point includes PWA meta tags (theme-color, viewport, apple-mobile-web-app-capable, apple-mobile-web-app-status-bar-style), a manifest link pointing to /manifest.json, an apple-touch-icon link referencing the generated icon at frontend/public/assets/generated/pwa-icon-512.dim_512x512.png, and a service worker registration script that registers /sw.js."
-        },
-        {
-          "path": "frontend/public/manifest.json",
-          "operation": "modify",
-          "description": "Review and verify the manifest.json file includes the app name 'SPA Field Measure', standalone display mode, an earthy green theme color, background color, start_url pointing to /, and icons array referencing the generated app icons at /assets/generated/pwa-icon-192.dim_192x192.png (192×192) and /assets/generated/pwa-icon-512.dim_512x512.png (512×512) with type image/png and purpose any maskable."
-        },
-        {
-          "path": "frontend/public/sw.js",
-          "operation": "modify",
-          "description": "Review and verify the service worker caches the app shell resources (index.html, main CSS/JS bundles, manifest.json, generated icons) on install event, removes old caches on activate event, and uses a cache-first strategy for static assets with network-first strategy for ICP canister API calls in the fetch event handler."
+          "description": "Update the apple-touch-icon link to point to the generated icon at /assets/generated/apple-touch-icon-180x180.png. Ensure theme-color meta tag is set to '#ffffff' and manifest link points to /manifest.json."
         }
       ]
     },
     {
       "id": "REQ-4",
-      "summary": "Apply an agricultural earthy-green visual theme using OKLCH color tokens for both light and dark modes, with mobile-first single-column layout, sticky header with app logo, and sections for calculator, measurement tips, formula reference, unit conversions, and footer.",
+      "summary": "Ensure frontend/public/sw.js service worker is correctly registered and caches the app shell including new barn logo icons for offline support and PWA installability",
       "acceptanceCriteria": [
-        "Color palette uses earthy greens defined as OKLCH CSS custom properties for light and dark themes",
-        "Layout is single-column and mobile-first",
-        "Header is sticky and displays the app logo/name",
-        "Page includes tips panel, formula reference section, unit conversion reference, and footer below the calculator"
+        "Service worker is registered in index.html",
+        "App shell files (index.html, manifest.json, icons) are precached on install",
+        "App passes PWA installability criteria (manifest + service worker + HTTPS)",
+        "Install prompt appears on supported Android browsers"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/index.css",
+          "path": "frontend/public/sw.js",
           "operation": "modify",
-          "description": "Review and verify the global stylesheet defines OKLCH CSS custom properties for an agricultural earthy-green color palette in both light and dark themes. Ensure the palette includes primary, secondary, accent, background, foreground, muted, and border colors. Verify Tailwind directives are present."
-        },
-        {
-          "path": "frontend/tailwind.config.js",
-          "operation": "modify",
-          "description": "Review and verify the Tailwind configuration extends the default theme with custom OKLCH-based color tokens that reference the CSS custom properties defined in index.css. Ensure typography, container queries, and animate plugins are enabled."
-        },
-        {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Review and verify the App component renders a single-column mobile-first layout with a sticky header displaying the app logo (use the generated app-logo.dim_256x256.png from frontend/public/assets/generated/app-logo.dim_256x256.png), followed by the FieldCalculator component, ConsiderationsPanel (tips), a formula reference section, a unit conversion reference section, and a footer. Ensure the layout uses earthy-green theme colors and responsive spacing."
-        },
-        {
-          "path": "frontend/src/components/ConsiderationsPanel.tsx",
-          "operation": "modify",
-          "description": "Review and verify the ConsiderationsPanel component renders an amber-tinted card with three measurement tips (wheel slip, path accuracy, irregular fields) displayed as icon+text rows. Ensure the card styling uses the theme colors and is visually distinct from the calculator."
-        },
-        {
-          "path": "frontend/src/components/FormulaReference.tsx",
-          "operation": "create",
-          "description": "Create a FormulaReference component that displays a reference section listing the mathematical formulas for each calculation type: perimeter (wheel circumference × rotation count), rectangle area (length × width), square area (side²), irregular area (sum of triangle areas: 0.5 × base × height), and rotation-based area. Use earthy-green themed cards or list items. Render formulas as plain text or use basic HTML for readability."
-        },
-        {
-          "path": "frontend/src/components/UnitConversions.tsx",
-          "operation": "create",
-          "description": "Create a UnitConversions component that displays a reference table or list of unit conversion factors: 1 hectare = 10,000 m², 1 acre = 4,046.86 m², 1 km = 1,000 m. Use earthy-green themed styling consistent with the app's visual design."
-        },
-        {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Wire the newly created FormulaReference and UnitConversions components into the App layout below the ConsiderationsPanel and above the footer. Import both components and render them in the appropriate sections."
+          "description": "Update the CACHE_NAME to force cache refresh and ensure the app shell precache list includes the new barn logo icon assets: /assets/generated/icon-192x192.dim_192x192.png, /assets/generated/icon-512x512.dim_512x512.png, and /assets/generated/apple-touch-icon-180x180.dim_180x180.png. Verify that index.html, manifest.json, and core static assets are cached on install for offline access."
         }
       ]
     }
